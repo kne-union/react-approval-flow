@@ -63,7 +63,7 @@
   "bugs": {
     "url": "https://github.com/kne-union/react-approval-flow/issues"
   },
-  "homepage": "https://github.com/kne-union/react-approval-flow",
+  "homepage": "https://www.kne-union.top/#/libs/ReactApprovalFlow",
   "eslintConfig": {
     "extends": [
       "react-app",
