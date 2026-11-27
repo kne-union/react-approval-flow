@@ -1,0 +1,670 @@
+/* 节点类型配色：与 form-creator 模块底色同一套 */
+.kind-approval {
+  --kind-bg: #eef4ff;
+  --kind-color: #2f54eb;
+}
+
+.kind-handle {
+  --kind-bg: #eafaf8;
+  --kind-color: #08979c;
+}
+
+.kind-cc {
+  --kind-bg: #f6f0ff;
+  --kind-color: #722ed1;
+}
+
+.kind-condition,
+.kind-conditionBranch {
+  --kind-bg: #fff8e8;
+  --kind-color: #d48806;
+}
+
+.kind-parallel,
+.kind-parallelBranch {
+  --kind-bg: #effaf1;
+  --kind-color: #389e0d;
+}
+
+.designer {
+  width: 100%;
+}
+
+.designer-chart,
+.preview {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 添加节点菜单的图标块 */
+.kind-approval,
+.kind-handle,
+.kind-cc,
+.kind-condition,
+.kind-parallel {
+  :global(.flow-chart-node-type-icon) {
+    background: var(--kind-bg);
+    color: var(--kind-color);
+  }
+}
+
+/* 节点卡片：白底卡片 + 类型色数据区 */
+.node {
+  :global(.flow-chart-node-data) {
+    background: var(--kind-bg, #f7f8fa);
+  }
+}
+
+.node-has-error {
+  border-color: #ff7875 !important;
+}
+
+.node-title {
+  width: 100%;
+  min-width: 0;
+}
+
+.node-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--kind-bg, #f1f7ff);
+  color: var(--kind-color, #4183f0);
+  font-size: 12px;
+}
+
+.node-title-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-title-label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.node-title-error,
+.node-title-warning {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.node-title-error {
+  color: #ff4d4f;
+}
+
+.node-title-warning {
+  color: #faad14;
+}
+
+.node-card {
+  min-width: 0;
+}
+
+.node-card-summary {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+  line-height: 20px;
+  word-break: break-all;
+}
+
+/* 运行状态 */
+.node-status-passed {
+  border-color: #95de64 !important;
+}
+
+.node-status-running {
+  border-color: #69b1ff !important;
+}
+
+.node-status-rejected {
+  border-color: #ff7875 !important;
+}
+
+.node-status-returned {
+  border-color: #ffc069 !important;
+}
+
+.node-status-canceled,
+.node-status-skipped,
+.node-status-pending {
+  opacity: 0.55;
+}
+
+.status-pill {
+  flex-shrink: 0;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.status-passed {
+  background: #f6ffed;
+  color: #389e0d;
+}
+
+.status-running {
+  background: #e6f4ff;
+  color: #1677ff;
+}
+
+.status-rejected {
+  background: #fff1f0;
+  color: #cf1322;
+}
+
+.status-returned {
+  background: #fff7e6;
+  color: #d46b08;
+}
+
+.status-canceled,
+.status-skipped,
+.status-pending {
+  background: #f5f5f5;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.preview-handlers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.preview-handler {
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 18px;
+
+  &.status-pending {
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* 流程检查 */
+.issue-panel {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f4f6f9;
+}
+
+.issue-panel-header {
+  margin-bottom: 10px;
+}
+
+.issue-panel-title {
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.issue-count {
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 18px;
+
+  &.is-error {
+    background: #fff1f0;
+    color: #cf1322;
+  }
+
+  &.is-warning {
+    background: #fff7e6;
+    color: #d46b08;
+  }
+}
+
+.issue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.issue-item {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 13px;
+  line-height: 20px;
+  transition: background 0.15s ease;
+
+  &.is-clickable {
+    cursor: pointer;
+
+    &:hover {
+      background: #fcfdff;
+
+      .issue-arrow {
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-color, #1677ff);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.issue-icon-error,
+.issue-icon-warning {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.issue-icon-error {
+  color: #ff4d4f;
+}
+
+.issue-icon-warning {
+  color: #faad14;
+}
+
+.issue-node {
+  flex-shrink: 0;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 500;
+}
+
+.issue-message {
+  flex: 1;
+  min-width: 0;
+}
+
+.issue-arrow {
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 10px;
+  transition: color 0.15s ease;
+}
+
+/* 通用按钮 */
+.icon-btn {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  flex-shrink: 0;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px !important;
+
+  :global(.anticon) {
+    font-size: 13px;
+  }
+}
+
+.add-btn {
+  height: 32px !important;
+  border-radius: 8px !important;
+  color: rgba(0, 0, 0, 0.55) !important;
+
+  &:hover:not(:disabled) {
+    color: var(--primary-color, #1677ff) !important;
+  }
+}
+
+.add-inline-btn {
+  height: 26px !important;
+  padding: 0 10px !important;
+  border: none !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.55) !important;
+  font-size: 12px !important;
+  font-weight: 500;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 2px;
+
+  :global(.anticon) {
+    font-size: 11px;
+  }
+
+  &:hover:not(:disabled) {
+    color: rgba(0, 0, 0, 0.85) !important;
+    background: #fff !important;
+  }
+}
+
+.pill-btn {
+  border-radius: 999px !important;
+  font-weight: 500;
+}
+
+.inline-empty {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f7f8fa;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* 节点配置弹窗：与 form-creator 属性弹窗一致，头尾固定，中间内容区独立滚动 */
+.property-modal {
+  :global(.ant-modal-body) {
+    max-height: calc(100vh - 220px);
+    margin-inline: -24px;
+    padding: 4px 24px 8px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+/* 弹窗顶部：节点类型与用途说明 */
+.editor-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f6f8fb;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 13px;
+  line-height: 22px;
+}
+
+.editor-intro-tag:global(.ant-tag) {
+  flex: none;
+  margin: 0;
+  border: none;
+  background: var(--kind-bg, #f0f2f5);
+  color: var(--kind-color, rgba(0, 0, 0, 0.65));
+  font-weight: 500;
+}
+
+.editor-issues {
+  margin-bottom: 16px;
+}
+
+/* 配置分区：带序号的卡片，标题下附一句说明 */
+.node-config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  counter-reset: editor-section;
+
+  :global {
+    .part.ant-card {
+      border: 1px solid #edf0f5 !important;
+      border-radius: 12px !important;
+      background: #ffffff !important;
+      box-shadow: none !important;
+      overflow: hidden;
+    }
+
+    .part.ant-card:not(.no-title) {
+      counter-increment: editor-section;
+    }
+
+    .part.ant-card > .ant-card-head {
+      min-height: 0;
+      margin: 0 !important;
+      padding: 12px 16px !important;
+      border-bottom: 1px solid #f0f2f5 !important;
+      background: #fafbfc !important;
+    }
+
+    .part.ant-card > .ant-card-head .ant-card-head-title {
+      padding: 0;
+      white-space: normal;
+    }
+
+    .part.ant-card > .ant-card-head .part-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 !important;
+      color: rgba(0, 0, 0, 0.88);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+
+      &::before {
+        content: counter(editor-section);
+        position: static !important;
+        display: inline-flex;
+        flex: none;
+        align-items: center;
+        justify-content: center;
+        width: 20px !important;
+        height: 20px !important;
+        margin: 0 !important;
+        border-radius: 6px !important;
+        background: var(--primary-color, #1677ff) !important;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 600;
+        transform: none !important;
+      }
+    }
+
+    .part.ant-card > .ant-card-head .part-title-sub {
+      margin: 2px 0 0 28px !important;
+      padding: 0 !important;
+      color: rgba(0, 0, 0, 0.45);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    /* 表单项自带 22px 下边距用于放校验信息，底部内边距相应收窄 */
+    .part.ant-card > .ant-card-body {
+      padding: 16px 16px 0 !important;
+    }
+
+    .part.ant-card .part.ant-card {
+      counter-increment: none;
+      border-radius: 8px !important;
+    }
+
+    .part.ant-card .part.ant-card > .ant-card-head .part-title::before {
+      content: none;
+      display: none;
+    }
+  }
+}
+
+/* 分区内的开关组：无外框，与上方输入项隔开一行 */
+.node-config-form .editor-toggles:global(.part.ant-card) {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  overflow: visible;
+
+  > :global(.ant-card-body) {
+    padding: 0 !important;
+  }
+}
+
+.alert-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.approver-editor {
+  width: 100%;
+}
+
+.approver-row {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f7f8fa;
+}
+
+.approver-source {
+  flex-shrink: 0;
+}
+
+.approver-detail {
+  min-width: 0;
+
+  :global(.ant-select) {
+    width: 100%;
+  }
+}
+
+/* 补充表单概览 */
+.form-summary {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f4f6f9;
+}
+
+.form-summary-title {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-summary-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.form-field-chip {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.form-field-required {
+  margin-right: 2px;
+  color: #ff4d4f;
+}
+
+.mapping-row {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #f7f8fa;
+}
+
+.mapping-arrow {
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 12px;
+}
+
+/* 条件编辑器 */
+.condition-group {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f4f6f9;
+
+  &.is-nested {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+
+  .inline-empty {
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.condition-group-header {
+  margin-bottom: 10px;
+}
+
+/* 条件组逻辑：满足 [全部 | 任一] 条件，胶囊切换与 form-creator 对齐方式切换一致 */
+.logic-switch-text {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+}
+
+.logic-switch-group:global(.ant-radio-group) {
+  display: inline-flex;
+  padding: 2px;
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  :global {
+    .ant-radio-button-wrapper {
+      height: 24px;
+      padding-inline: 12px;
+      line-height: 22px;
+      border: none !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 12px;
+
+      &::before {
+        display: none !important;
+      }
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.88);
+      }
+
+      &:focus-within {
+        box-shadow: none !important;
+      }
+    }
+
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+      background: var(--primary-color, #1677ff) !important;
+      color: #fff !important;
+      font-weight: 500;
+    }
+
+    .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+      color: #fff !important;
+    }
+  }
+}
+
+.condition-group-actions {
+  margin-top: 10px;
+}
+
+.condition-rule {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.condition-rule-error {
+  flex-basis: 100%;
+  font-size: 12px;
+}

@@ -1,0 +1,91 @@
+{
+  "isFull": false,
+  "list": [
+    {
+      "title": "审批流程设计器",
+      "description": "费用报销流程：上级审批 → 财务复核（补充表单，核定金额写入 vars.approvedAmount）→ 按核定金额条件分流 → 并行办理 → 抄送；点击节点编辑配置，底部实时校验",
+      "code": "./base.js",
+      "isFull": true,
+      "scope": [
+        {
+          "name": "_ReactApprovalFlow",
+          "packageName": "@kne/current-lib_react-approval-flow",
+          "importStatement": "import * as _ReactApprovalFlow from \"@kne/react-approval-flow\""
+        },
+        {
+          "packageName": "@kne/current-lib_react-approval-flow/dist/index.css",
+          "importStatement": "import \"@kne/react-approval-flow/dist/index.css\""
+        },
+        {
+          "name": "_FormCreator",
+          "packageName": "@kne/form-creator",
+          "importStatement": "import * as _FormCreator from \"@kne/form-creator\""
+        },
+        {
+          "name": "antd",
+          "packageName": "antd",
+          "importStatement": "import antd from \"antd\""
+        }
+      ]
+    },
+    {
+      "title": "条件编辑器",
+      "description": "基于 buildContextSchema 推导出的上下文字段编辑嵌套条件，并用模拟上下文试算 evaluateCondition",
+      "code": "./condition-editor.js",
+      "scope": [
+        {
+          "name": "_ReactApprovalFlow",
+          "packageName": "@kne/current-lib_react-approval-flow",
+          "importStatement": "import * as _ReactApprovalFlow from \"@kne/react-approval-flow\""
+        },
+        {
+          "packageName": "@kne/current-lib_react-approval-flow/dist/index.css",
+          "importStatement": "import \"@kne/react-approval-flow/dist/index.css\""
+        },
+        {
+          "name": "antd",
+          "packageName": "antd",
+          "importStatement": "import antd from \"antd\""
+        }
+      ]
+    },
+    {
+      "title": "运行状态预览",
+      "description": "只读展示流程实例的节点状态与处理记录，切换审批中、已驳回、已通过三个阶段",
+      "code": "./preview.js",
+      "scope": [
+        {
+          "name": "_ReactApprovalFlow",
+          "packageName": "@kne/current-lib_react-approval-flow",
+          "importStatement": "import * as _ReactApprovalFlow from \"@kne/react-approval-flow\""
+        },
+        {
+          "packageName": "@kne/current-lib_react-approval-flow/dist/index.css",
+          "importStatement": "import \"@kne/react-approval-flow/dist/index.css\""
+        },
+        {
+          "name": "antd",
+          "packageName": "antd",
+          "importStatement": "import antd from \"antd\""
+        }
+      ]
+    },
+    {
+      "title": "流程校验与上下文推导",
+      "description": "对一个故意配错的流程调用 validateFlow，展示问题列表、某分支可引用的上下文范围以及推导出的 context schema",
+      "code": "./validate.js",
+      "scope": [
+        {
+          "name": "_ReactApprovalFlow",
+          "packageName": "@kne/current-lib_react-approval-flow",
+          "importStatement": "import * as _ReactApprovalFlow from \"@kne/react-approval-flow\""
+        },
+        {
+          "name": "antd",
+          "packageName": "antd",
+          "importStatement": "import antd from \"antd\""
+        }
+      ]
+    }
+  ]
+}
